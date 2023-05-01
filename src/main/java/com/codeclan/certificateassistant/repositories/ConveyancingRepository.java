@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ConveyancingRepository extends JpaRepository<Conveyancing, Long> {
-    List<Conveyancing> findConveyancesByClientIndividualJurisdiction(String jurisdiction);
+    List<Conveyancing> findConveyancesByClientJurisdictionAndClientClientTypeAndPricePaidGreaterThanEqualAndPricePaidLessThanAndResidential(String jurisdiction, String clientType, double min, double max, boolean residential);
+    List<Conveyancing> findConveyancesByClientJurisdictionNotInAndClientClientTypeAndPricePaidGreaterThanEqualAndPricePaidLessThanAndResidential(List<String> jurisdiction, String clientType, double min, double max, boolean residential);
+//    List<Conveyancing> findConveyancesByClientOwnershipJurisdictionsAndClientClientTypeAndPricePaidGreaterThanEqualAndPricePaidLessThanAndResidential(String jurisdiction, String clientType, double min, double max, boolean residential);
 
+    List<Conveyancing> findConveyancesByClientInOwnershipJurisdictions(List<String> country);
 }

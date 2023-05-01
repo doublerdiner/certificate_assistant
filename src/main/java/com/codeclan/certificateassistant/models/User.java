@@ -12,9 +12,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
+    @Column(name = "clients")
     @JsonIgnoreProperties({"user"})
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Client> clients;
@@ -42,7 +41,6 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public List<Client> getClients() {
         return clients;
